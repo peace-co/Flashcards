@@ -1,0 +1,28 @@
+{
+  "flashcardsApp": {
+    "flashcardViewer": {
+      "home": {
+        "title": "Flashcard Viewer",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Flashcard erstellen",
+        "createOrEditLabel": "Flashcard erstellen oder bearbeiten",
+        "notFound": "Keine Flashcards gefunden"
+      },
+      "created": "Flashcard erstellt mit ID {{ param }}",
+      "updated": "Flashcard aktualisiert mit ID {{ param }}",
+      "deleted": "Flashcard gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Flashcard {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Flashcard"
+      },
+      "id": "ID",
+      "question": "Question",
+      "answer": "Answer",
+      "hint": "Hint",
+      "globalRating": "Global Rating",
+      "tag": "Tag"
+    }
+  }
+}

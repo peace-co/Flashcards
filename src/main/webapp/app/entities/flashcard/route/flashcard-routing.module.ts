@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
+import { FlashcardViewerComponent } from '../viewer/flashcard-viewer.component';
 import { FlashcardComponent } from '../list/flashcard.component';
 import { FlashcardDetailComponent } from '../detail/flashcard-detail.component';
 import { FlashcardUpdateComponent } from '../update/flashcard-update.component';
@@ -9,6 +10,14 @@ import { FlashcardRoutingResolveService } from './flashcard-routing-resolve.serv
 import { ASC } from 'app/config/navigation.constants';
 
 const flashcardRoute: Routes = [
+  {
+    path: 'viewer',
+    component: FlashcardViewerComponent,
+    data: {
+      // defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
   {
     path: '',
     component: FlashcardComponent,
