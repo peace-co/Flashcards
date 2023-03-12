@@ -34,6 +34,9 @@
   <jhi-alert></jhi-alert>
 
   <div *ngIf="flashcard">
+    <div *ngIf="timeLeft">
+      <span>Time left: {{ timeLeft }} seconds...</span>
+    </div>
     <dl class="row-md jh-entity-details">
       <dt><span jhiTranslate="global.field.id">ID</span></dt>
       <dd>

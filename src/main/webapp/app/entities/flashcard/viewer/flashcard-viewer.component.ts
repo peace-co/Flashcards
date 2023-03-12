@@ -23,6 +23,8 @@ export class FlashcardViewerComponent implements OnInit {
   isLoading = false;
   showAnswer = false;
   showHint = false;
+  timeLeft: number = 300;
+  interval: any;
 
   predicate = 'id';
   ascending = true;
@@ -52,8 +54,18 @@ export class FlashcardViewerComponent implements OnInit {
       },
     });
     console.log('this.flashcard: ', this.flashcard);
-
+    this.startTimer();
     // this.load();
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 300;
+      }
+    }, 1000);
   }
 
   onShowNext() {
