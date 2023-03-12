@@ -55,7 +55,19 @@ export class FlashcardViewerComponent implements OnInit {
 
   showNext() {
     if (this.flashcards) {
-      this.flashcard = this.flashcards[++this.flashcardIndex];
+      if (this.flashcardIndex < this.flashcards.length - 1) {
+        this.flashcardIndex += 1;
+      }
+      this.flashcard = this.flashcards[this.flashcardIndex];
+    }
+  }
+
+  showPrevious() {
+    if (this.flashcards) {
+      if (this.flashcardIndex > 0) {
+        this.flashcardIndex -= 1;
+      }
+      this.flashcard = this.flashcards[this.flashcardIndex];
     }
   }
 

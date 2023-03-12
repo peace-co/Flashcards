@@ -23,7 +23,8 @@
       "hint": "Hint",
       "globalRating": "Global Rating",
       "tag": "Tag",
-      "next": "Next Flashcard"
+      "next": "Next Flashcard",
+      "previous": "Previous Flashcard"
     }
   }
 }
