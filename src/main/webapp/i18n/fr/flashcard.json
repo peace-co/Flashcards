@@ -1,0 +1,28 @@
+{
+  "flashcardsApp": {
+    "flashcard": {
+      "home": {
+        "title": "Flashcards",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Flashcard",
+        "createOrEditLabel": "Créer ou éditer un Flashcard",
+        "notFound": "Aucun Flashcard trouvé"
+      },
+      "created": "Un nouveau Flashcard a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Flashcard avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Flashcard avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Flashcard {{ id }} ?"
+      },
+      "detail": {
+        "title": "Flashcard"
+      },
+      "id": "ID",
+      "question": "Question",
+      "answer": "Answer",
+      "hint": "Hint",
+      "globalRating": "Global Rating",
+      "tag": "Tag"
+    }
+  }
+}

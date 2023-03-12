@@ -48,6 +48,9 @@ public class CacheConfiguration {
             createCache(cm, com.donthaveone.www.domain.User.class.getName());
             createCache(cm, com.donthaveone.www.domain.Authority.class.getName());
             createCache(cm, com.donthaveone.www.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.donthaveone.www.domain.Flashcard.class.getName());
+            createCache(cm, com.donthaveone.www.domain.Tag.class.getName());
+            createCache(cm, com.donthaveone.www.domain.Tag.class.getName() + ".flashcards");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,20 @@
+
+entity Flashcard {
+	question String required,
+	answer String required,
+	hint String,
+    globalRating Integer
+}
+
+entity Tag {
+	name String required
+}
+
+relationship OneToMany {
+	Tag to Flashcard{tag}
+}
+
+// Set pagination options
+paginate Flashcard, Tag with infinite-scroll
+paginate Flashcard with pagination
+

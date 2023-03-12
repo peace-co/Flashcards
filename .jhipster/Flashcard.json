@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20221222130336",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "flashcard",
+  "fields": [
+    {
+      "fieldName": "question",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "answer",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hint",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "globalRating",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Flashcard",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tag",
+      "otherEntityRelationshipName": "flashcard",
+      "relationshipName": "tag",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="FlashcardHeading">
+    <span jhiTranslate="flashcardsApp.flashcard.home.title">Flashcards</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="flashcardsApp.flashcard.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-flashcard"
+        [routerLink]="['/flashcard/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="flashcardsApp.flashcard.home.createLabel"> Create a new Flashcard </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="flashcards?.length === 0">
+    <span jhiTranslate="flashcardsApp.flashcard.home.notFound">No Flashcards found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="flashcards && flashcards.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="question">
+            <div class="d-flex">
+              <span jhiTranslate="flashcardsApp.flashcard.question">Question</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="answer">
+            <div class="d-flex">
+              <span jhiTranslate="flashcardsApp.flashcard.answer">Answer</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hint">
+            <div class="d-flex">
+              <span jhiTranslate="flashcardsApp.flashcard.hint">Hint</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="globalRating">
+            <div class="d-flex">
+              <span jhiTranslate="flashcardsApp.flashcard.globalRating">Global Rating</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tag.id">
+            <div class="d-flex">
+              <span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flashcard of flashcards; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/flashcard', flashcard.id, 'view']">{{ flashcard.id }}</a>
+          </td>
+          <td>{{ flashcard.question }}</td>
+          <td>{{ flashcard.answer }}</td>
+          <td>{{ flashcard.hint }}</td>
+          <td>{{ flashcard.globalRating }}</td>
+          <td>
+            <div *ngIf="flashcard.tag">
+              <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ flashcard.tag.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/flashcard', flashcard.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/flashcard', flashcard.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(flashcard)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="flashcards && flashcards.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
