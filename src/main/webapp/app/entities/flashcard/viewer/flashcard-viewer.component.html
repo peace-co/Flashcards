@@ -37,6 +37,9 @@
     <div *ngIf="timeLeft">
       <span>Time left: {{ timeLeft | timeLeft }} </span>
     </div>
+    <div>
+      <span>Correct / incorrect: {{ correctNum }} / {{ incorrectNum }} </span>
+    </div>
     <dl class="row-md jh-entity-details">
       <dt><span jhiTranslate="global.field.id">ID</span></dt>
       <dd>
