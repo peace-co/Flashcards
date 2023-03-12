@@ -32,6 +32,7 @@ export class FlashcardViewerComponent implements OnInit {
 
   predicate = 'id';
   ascending = true;
+  study = false;
 
   itemsPerPage = ITEMS_PER_PAGE;
   totalItems = 0;
@@ -68,7 +69,12 @@ export class FlashcardViewerComponent implements OnInit {
         this.onResponseSuccess(res);
       },
     });
-    console.log('this.flashcard: ', this.flashcard);
+
+    if (this.router.url === '/flashcard/viewer/study') {
+      this.study = true;
+    }
+
+    console.log('this.flashcard, this.router.url, this.study: ', this.flashcard, this.router.url, this.study);
     this.startTimer();
     // this.load();
   }

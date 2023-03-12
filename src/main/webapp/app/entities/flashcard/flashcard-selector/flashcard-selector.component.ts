@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EntityArrayResponseType, TagService } from 'app/entities/tag/service/tag.service';
 import { ITag } from 'app/entities/tag/tag.model';
 
@@ -13,7 +13,7 @@ export class FlashcardSelectorComponent implements OnInit {
   flashcard: IFlashcard | null = null;
   tags: ITag[] | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute, protected tagService: TagService) {}
+  constructor(protected activatedRoute: ActivatedRoute, public router: Router, protected tagService: TagService) {}
 
   ngOnInit(): void {
     const queryObject = {
@@ -42,6 +42,27 @@ export class FlashcardSelectorComponent implements OnInit {
 
   protected fillComponentAttributesFromResponseBody(data: IFlashcard[] | null): IFlashcard[] {
     return data ?? [];
+  }
+
+  onStudy() {
+    console.log('onStudy: ');
+    this.handleNavigation();
+    // const selects = document.querySelectorAll('select');
+    // const optgroups = selects[0].querySelectorAll('optgroup');
+    // console.log("onStudy, tags, flashcard, selects, optgroups: ", this.tags, this.flashcard, selects, optgroups);
+  }
+
+  protected handleNavigation(page = 10, predicate?: string, ascending?: boolean): void {
+    const queryParamsObj = {
+      page: 0,
+      size: 0,
+      sort: ['id,asc'],
+    };
+
+    this.router.navigate(['./flashcard/viewer/study'], {
+      // relativeTo: this.activatedRoute,
+      // queryParams: queryParamsObj,
+    });
   }
 
   // protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {

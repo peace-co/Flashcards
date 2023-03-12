@@ -12,6 +12,12 @@ import { FlashcardRoutingResolveService } from './flashcard-routing-resolve.serv
 
 const flashcardRoute: Routes = [
   {
+    path: 'viewer/study',
+    component: FlashcardViewerComponent,
+    data: {},
+    canActivate: [UserRouteAccessService],
+  },
+  {
     path: 'viewer',
     component: FlashcardViewerComponent,
     data: {},

@@ -37,7 +37,7 @@
         <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
         <div class="row mb-3">
           <!-- <label jhiTranslate="flashcardsApp.flashcard.tag" for="field_tags">Tag</label> -->
-          <select class="form-control" id="field_tags" data-cy="tag" multiple name="tags" formControlName="tags">
+          <select class="form-control" id="field_tags" data-cy="tag" multiple name="tags">
             <option [ngValue]="tagOption" *ngFor="let tagOption of tags">{{ tagOption.name }}</option>
           </select>
         </div>
@@ -49,8 +49,11 @@
         </dd> -->
       </dl>
 
-      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entitySelectorBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+      <button type="submit" (click)="onStudy()" class="btn btn-info" data-cy="entitySelectorStudyButton">
+        <fa-icon icon="book-open"></fa-icon>&nbsp;<span jhiTranslate="entity.action.study">Study</span>
       </button>
 
       <!-- <button type="button" [routerLink]="['/flashcard', flashcard.id, 'edit']" class="btn btn-primary">
