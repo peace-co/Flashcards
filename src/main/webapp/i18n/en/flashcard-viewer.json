@@ -25,7 +25,8 @@
       "tag": "Tag",
       "next": "Next Flashcard",
       "previous": "Previous Flashcard",
-      "showAnswer": "Show"
+      "showAnswer": "Show",
+      "showHint": "Show"
     }
   }
 }
