@@ -18,6 +18,13 @@
         <dd>
           <span>{{ tag.name }}</span>
         </dd>
+        <dt><span jhiTranslate="flashcardsApp.tag.flashcard">Flashcard</span></dt>
+        <dd>
+          <span *ngFor="let flashcard of tag.flashcards; let last = last">
+            <a [routerLink]="['/flashcard', flashcard.id, 'view']">{{ flashcard.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

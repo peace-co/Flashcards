@@ -51,12 +51,12 @@ describe('Flashcard Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Tag query and add missing value', () => {
       const flashcard: IFlashcard = { id: 456 };
-      const tag: ITag = { id: 67777 };
-      flashcard.tag = tag;
+      const tags: ITag[] = [{ id: 67777 }];
+      flashcard.tags = tags;
 
       const tagCollection: ITag[] = [{ id: 81244 }];
       jest.spyOn(tagService, 'query').mockReturnValue(of(new HttpResponse({ body: tagCollection })));
-      const additionalTags = [tag];
+      const additionalTags = [...tags];
       const expectedCollection: ITag[] = [...additionalTags, ...tagCollection];
       jest.spyOn(tagService, 'addTagToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -71,7 +71,7 @@ describe('Flashcard Management Update Component', () => {
     it('Should update editForm', () => {
       const flashcard: IFlashcard = { id: 456 };
       const tag: ITag = { id: 29082 };
-      flashcard.tag = tag;
+      flashcard.tags = [tag];
 
       activatedRoute.data = of({ flashcard });
       comp.ngOnInit();

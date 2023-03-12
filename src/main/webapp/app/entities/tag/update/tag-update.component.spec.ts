@@ -9,6 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { TagFormService } from './tag-form.service';
 import { TagService } from '../service/tag.service';
 import { ITag } from '../tag.model';
+import { IFlashcard } from 'app/entities/flashcard/flashcard.model';
+import { FlashcardService } from 'app/entities/flashcard/service/flashcard.service';
 
 import { TagUpdateComponent } from './tag-update.component';
 
@@ -18,6 +20,7 @@ describe('Tag Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let tagFormService: TagFormService;
   let tagService: TagService;
+  let flashcardService: FlashcardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,17 +43,43 @@ describe('Tag Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     tagFormService = TestBed.inject(TagFormService);
     tagService = TestBed.inject(TagService);
+    flashcardService = TestBed.inject(FlashcardService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
+    it('Should call Flashcard query and add missing value', () => {
       const tag: ITag = { id: 456 };
+      const flashcards: IFlashcard[] = [{ id: 97299 }];
+      tag.flashcards = flashcards;
+
+      const flashcardCollection: IFlashcard[] = [{ id: 90197 }];
+      jest.spyOn(flashcardService, 'query').mockReturnValue(of(new HttpResponse({ body: flashcardCollection })));
+      const additionalFlashcards = [...flashcards];
+      const expectedCollection: IFlashcard[] = [...additionalFlashcards, ...flashcardCollection];
+      jest.spyOn(flashcardService, 'addFlashcardToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ tag });
       comp.ngOnInit();
 
+      expect(flashcardService.query).toHaveBeenCalled();
+      expect(flashcardService.addFlashcardToCollectionIfMissing).toHaveBeenCalledWith(
+        flashcardCollection,
+        ...additionalFlashcards.map(expect.objectContaining)
+      );
+      expect(comp.flashcardsSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const tag: ITag = { id: 456 };
+      const flashcard: IFlashcard = { id: 93000 };
+      tag.flashcards = [flashcard];
+
+      activatedRoute.data = of({ tag });
+      comp.ngOnInit();
+
+      expect(comp.flashcardsSharedCollection).toContain(flashcard);
       expect(comp.tag).toEqual(tag);
     });
   });
@@ -120,6 +149,18 @@ describe('Tag Management Update Component', () => {
       expect(tagService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Compare relationships', () => {
+    describe('compareFlashcard', () => {
+      it('Should forward to flashcardService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(flashcardService, 'compareFlashcard');
+        comp.compareFlashcard(entity, entity2);
+        expect(flashcardService.compareFlashcard).toHaveBeenCalledWith(entity, entity2);
+      });
     });
   });
 });

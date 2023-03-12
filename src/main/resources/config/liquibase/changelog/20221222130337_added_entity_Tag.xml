@@ -21,6 +21,20 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="20221222130337-1-relations" author="jhipster">
+
+        <createTable tableName="rel_tag__flashcard">
+            <column name="flashcard_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="tag_id, flashcard_id" tableName="rel_tag__flashcard"/>
+    </changeSet>
+
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--

@@ -30,9 +30,14 @@ public class Tag implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "tag")
+    @ManyToMany
+    @JoinTable(
+        name = "rel_tag__flashcard",
+        joinColumns = @JoinColumn(name = "tag_id"),
+        inverseJoinColumns = @JoinColumn(name = "flashcard_id")
+    )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "tag" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "tags" }, allowSetters = true)
     private Set<Flashcard> flashcards = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -68,12 +73,6 @@ public class Tag implements Serializable {
     }
 
     public void setFlashcards(Set<Flashcard> flashcards) {
-        if (this.flashcards != null) {
-            this.flashcards.forEach(i -> i.setTag(null));
-        }
-        if (flashcards != null) {
-            flashcards.forEach(i -> i.setTag(this));
-        }
         this.flashcards = flashcards;
     }
 
@@ -84,13 +83,13 @@ public class Tag implements Serializable {
 
     public Tag addFlashcard(Flashcard flashcard) {
         this.flashcards.add(flashcard);
-        flashcard.setTag(this);
+        flashcard.getTags().add(this);
         return this;
     }
 
     public Tag removeFlashcard(Flashcard flashcard) {
         this.flashcards.remove(flashcard);
-        flashcard.setTag(null);
+        flashcard.getTags().remove(this);
         return this;
     }
 

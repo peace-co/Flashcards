@@ -43,6 +43,11 @@
         </div>
 
         <!-- <div class="row mb-3">
+          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.correct" for="field_correct">Correct</label>
+          <input type="checkbox" class="form-check" name="correct" id="field_correct" data-cy="correct" formControlName="correct" />
+        </div> -->
+
+        <!-- <div class="row mb-3">
           <label class="form-label" jhiTranslate="flashcardsApp.flashcard.globalRating" for="field_globalRating">Global Rating</label>
           <input
             type="number"
@@ -55,10 +60,9 @@
         </div> -->
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.tag" for="field_tag">Tags</label>
-          <select class="form-control" id="field_tag" data-cy="tag" name="tag" formControlName="tag" [compareWith]="compareTag">
-            <option [ngValue]="null"></option>
-            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.name }}</option>
+          <label jhiTranslate="flashcardsApp.flashcard.tag" for="field_tags">Tag</label>
+          <select class="form-control" id="field_tags" data-cy="tag" multiple name="tags" formControlName="tags" [compareWith]="compareTag">
+            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.id }}</option>
           </select>
         </div>
       </div>

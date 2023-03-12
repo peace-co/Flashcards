@@ -37,8 +37,9 @@
     {
       "otherEntityName": "tag",
       "otherEntityRelationshipName": "flashcard",
+      "ownerSide": "true",
       "relationshipName": "tag",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "no"

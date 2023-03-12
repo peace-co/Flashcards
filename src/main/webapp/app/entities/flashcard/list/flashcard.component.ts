@@ -10,7 +10,6 @@ import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/co
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { EntityArrayResponseType, FlashcardService } from '../service/flashcard.service';
 import { FlashcardDeleteDialogComponent } from '../delete/flashcard-delete-dialog.component';
-import { ITag } from 'app/entities/tag/tag.model';
 
 @Component({
   selector: 'jhi-flashcard',
@@ -107,6 +106,7 @@ export class FlashcardComponent implements OnInit {
     const queryObject = {
       page: pageToLoad - 1,
       size: this.itemsPerPage,
+      eagerload: true,
       sort: this.getSortQueryParam(predicate, ascending),
     };
     return this.flashcardService.query(queryObject).pipe(tap(() => (this.isLoading = false)));

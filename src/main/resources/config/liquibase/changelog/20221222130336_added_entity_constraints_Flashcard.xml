@@ -8,9 +8,15 @@
     -->
     <changeSet id="20221222130336-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="flashcard_id"
+                                 baseTableName="rel_flashcard__tag"
+                                 constraintName="fk_rel_flashcard__tag__flashcard_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="flashcard"/>
+
         <addForeignKeyConstraint baseColumnNames="tag_id"
-                                 baseTableName="flashcard"
-                                 constraintName="fk_flashcard__tag_id"
+                                 baseTableName="rel_flashcard__tag"
+                                 constraintName="fk_rel_flashcard__tag__tag_id"
                                  referencedColumnNames="id"
                                  referencedTableName="tag"/>
     </changeSet>

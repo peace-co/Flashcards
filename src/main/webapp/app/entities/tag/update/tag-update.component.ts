@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { TagFormService, TagFormGroup } from './tag-form.service';
 import { ITag } from '../tag.model';
 import { TagService } from '../service/tag.service';
+import { IFlashcard } from 'app/entities/flashcard/flashcard.model';
+import { FlashcardService } from 'app/entities/flashcard/service/flashcard.service';
 
 @Component({
   selector: 'jhi-tag-update',
@@ -16,9 +18,18 @@ export class TagUpdateComponent implements OnInit {
   isSaving = false;
   tag: ITag | null = null;
 
+  flashcardsSharedCollection: IFlashcard[] = [];
+
   editForm: TagFormGroup = this.tagFormService.createTagFormGroup();
 
-  constructor(protected tagService: TagService, protected tagFormService: TagFormService, protected activatedRoute: ActivatedRoute) {}
+  constructor(
+    protected tagService: TagService,
+    protected tagFormService: TagFormService,
+    protected flashcardService: FlashcardService,
+    protected activatedRoute: ActivatedRoute
+  ) {}
+
+  compareFlashcard = (o1: IFlashcard | null, o2: IFlashcard | null): boolean => this.flashcardService.compareFlashcard(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ tag }) => {
@@ -26,6 +37,8 @@ export class TagUpdateComponent implements OnInit {
       if (tag) {
         this.updateForm(tag);
       }
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -65,5 +78,22 @@ export class TagUpdateComponent implements OnInit {
   protected updateForm(tag: ITag): void {
     this.tag = tag;
     this.tagFormService.resetForm(this.editForm, tag);
+
+    this.flashcardsSharedCollection = this.flashcardService.addFlashcardToCollectionIfMissing<IFlashcard>(
+      this.flashcardsSharedCollection,
+      ...(tag.flashcards ?? [])
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.flashcardService
+      .query()
+      .pipe(map((res: HttpResponse<IFlashcard[]>) => res.body ?? []))
+      .pipe(
+        map((flashcards: IFlashcard[]) =>
+          this.flashcardService.addFlashcardToCollectionIfMissing<IFlashcard>(flashcards, ...(this.tag?.flashcards ?? []))
+        )
+      )
+      .subscribe((flashcards: IFlashcard[]) => (this.flashcardsSharedCollection = flashcards));
   }
 }

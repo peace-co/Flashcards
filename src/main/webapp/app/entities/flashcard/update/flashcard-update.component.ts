@@ -79,14 +79,14 @@ export class FlashcardUpdateComponent implements OnInit {
     this.flashcard = flashcard;
     this.flashcardFormService.resetForm(this.editForm, flashcard);
 
-    this.tagsSharedCollection = this.tagService.addTagToCollectionIfMissing<ITag>(this.tagsSharedCollection, flashcard.tag);
+    this.tagsSharedCollection = this.tagService.addTagToCollectionIfMissing<ITag>(this.tagsSharedCollection, ...(flashcard.tags ?? []));
   }
 
   protected loadRelationshipsOptions(): void {
     this.tagService
       .query()
       .pipe(map((res: HttpResponse<ITag[]>) => res.body ?? []))
-      .pipe(map((tags: ITag[]) => this.tagService.addTagToCollectionIfMissing<ITag>(tags, this.flashcard?.tag)))
+      .pipe(map((tags: ITag[]) => this.tagService.addTagToCollectionIfMissing<ITag>(tags, ...(this.flashcard?.tags ?? []))))
       .subscribe((tags: ITag[]) => (this.tagsSharedCollection = tags));
   }
 }

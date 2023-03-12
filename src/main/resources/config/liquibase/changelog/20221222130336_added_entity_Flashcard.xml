@@ -23,14 +23,28 @@
             <column name="hint" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="global_rating" type="integer">
+            <column name="correct" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="tag_id" type="bigint">
+            <column name="global_rating" type="integer">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+    </changeSet>
+
+    <changeSet id="20221222130336-1-relations" author="jhipster">
+
+        <createTable tableName="rel_flashcard__tag">
+            <column name="tag_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flashcard_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="flashcard_id, tag_id" tableName="rel_flashcard__tag"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -53,6 +67,7 @@
             <column name="question" type="string"/>
             <column name="answer" type="string"/>
             <column name="hint" type="string"/>
+            <column name="correct" type="boolean"/>
             <column name="global_rating" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

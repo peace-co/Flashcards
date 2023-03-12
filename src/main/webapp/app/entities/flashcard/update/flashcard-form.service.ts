@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type FlashcardFormGroupInput = IFlashcard | PartialWithRequiredKeyOf<NewFlashcard>;
 
-type FlashcardFormDefaults = Pick<NewFlashcard, 'id' | 'correct'>;
+type FlashcardFormDefaults = Pick<NewFlashcard, 'id' | 'correct' | 'tags'>;
 
 type FlashcardFormGroupContent = {
   id: FormControl<IFlashcard['id'] | NewFlashcard['id']>;
@@ -23,7 +23,7 @@ type FlashcardFormGroupContent = {
   hint: FormControl<IFlashcard['hint']>;
   correct: FormControl<IFlashcard['correct']>;
   globalRating: FormControl<IFlashcard['globalRating']>;
-  tag: FormControl<IFlashcard['tag']>;
+  tags: FormControl<IFlashcard['tags']>;
 };
 
 export type FlashcardFormGroup = FormGroup<FlashcardFormGroupContent>;
@@ -52,7 +52,7 @@ export class FlashcardFormService {
       hint: new FormControl(flashcardRawValue.hint),
       correct: new FormControl(flashcardRawValue.correct),
       globalRating: new FormControl(flashcardRawValue.globalRating),
-      tag: new FormControl(flashcardRawValue.tag),
+      tags: new FormControl(flashcardRawValue.tags ?? []),
     });
   }
 
@@ -74,6 +74,7 @@ export class FlashcardFormService {
     return {
       id: null,
       correct: false,
+      tags: [],
     };
   }
 }

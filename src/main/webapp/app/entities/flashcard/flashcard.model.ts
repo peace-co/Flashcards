@@ -7,7 +7,7 @@ export interface IFlashcard {
   hint?: string | null;
   correct?: boolean | null;
   globalRating?: number | null;
-  tag?: Pick<ITag, 'id'> | null;
+  tags?: Pick<ITag, 'id'>[] | null;
 }
 
 export type NewFlashcard = Omit<IFlashcard, 'id'> & { id: null };

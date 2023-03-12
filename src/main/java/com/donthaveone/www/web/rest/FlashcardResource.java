@@ -161,12 +161,21 @@ public class FlashcardResource {
      * {@code GET  /flashcards} : get all the flashcards.
      *
      * @param pageable the pagination information.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of flashcards in body.
      */
     @GetMapping("/flashcards")
-    public ResponseEntity<List<Flashcard>> getAllFlashcards(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
+    public ResponseEntity<List<Flashcard>> getAllFlashcards(
+        @org.springdoc.api.annotations.ParameterObject Pageable pageable,
+        @RequestParam(required = false, defaultValue = "false") boolean eagerload
+    ) {
         log.debug("REST request to get a page of Flashcards");
-        Page<Flashcard> page = flashcardRepository.findAll(pageable);
+        Page<Flashcard> page;
+        if (eagerload) {
+            page = flashcardRepository.findAllWithEagerRelationships(pageable);
+        } else {
+            page = flashcardRepository.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -180,7 +189,7 @@ public class FlashcardResource {
     @GetMapping("/flashcards/{id}")
     public ResponseEntity<Flashcard> getFlashcard(@PathVariable Long id) {
         log.debug("REST request to get Flashcard : {}", id);
-        Optional<Flashcard> flashcard = flashcardRepository.findById(id);
+        Optional<Flashcard> flashcard = flashcardRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(flashcard);
     }
 

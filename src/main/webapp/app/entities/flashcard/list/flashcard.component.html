@@ -72,12 +72,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th> -->
-          <!-- <th scope="col" jhiSortBy="tag.id">
-            <div class="d-flex">
-              <span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th> -->
           <th scope="col"></th>
         </tr>
       </thead>
@@ -91,11 +85,6 @@
           <td>{{ flashcard.hint }}</td>
           <td>{{ flashcard.correct }}</td>
           <td>{{ flashcard.globalRating }}</td>
-          <!-- <td>
-            <div *ngIf="flashcard.tag">
-              <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ flashcard.tag.id }}</a>
-            </div>
-          </td> -->
           <td class="text-end">
             <div class="btn-group">
               <button

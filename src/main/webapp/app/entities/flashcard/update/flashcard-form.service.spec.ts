@@ -25,7 +25,7 @@ describe('Flashcard Form Service', () => {
             hint: expect.any(Object),
             correct: expect.any(Object),
             globalRating: expect.any(Object),
-            tag: expect.any(Object),
+            tags: expect.any(Object),
           })
         );
       });
@@ -41,7 +41,7 @@ describe('Flashcard Form Service', () => {
             hint: expect.any(Object),
             correct: expect.any(Object),
             globalRating: expect.any(Object),
-            tag: expect.any(Object),
+            tags: expect.any(Object),
           })
         );
       });

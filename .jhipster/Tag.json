@@ -20,8 +20,9 @@
     {
       "otherEntityName": "flashcard",
       "otherEntityRelationshipName": "tag",
+      "ownerSide": "false",
       "relationshipName": "flashcard",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "no"
