@@ -43,6 +43,11 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.correct" for="field_correct">Correct</label>
+          <input type="checkbox" class="form-check" name="correct" id="field_correct" data-cy="correct" formControlName="correct" />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="flashcardsApp.flashcard.globalRating" for="field_globalRating">Global Rating</label>
           <input
             type="number"

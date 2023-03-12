@@ -20,6 +20,10 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "correct",
+      "fieldType": "Boolean"
+    },
+    {
       "fieldName": "globalRating",
       "fieldType": "Integer"
     }

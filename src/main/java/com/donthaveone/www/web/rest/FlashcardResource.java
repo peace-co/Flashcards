@@ -140,6 +140,9 @@ public class FlashcardResource {
                 if (flashcard.getHint() != null) {
                     existingFlashcard.setHint(flashcard.getHint());
                 }
+                if (flashcard.getCorrect() != null) {
+                    existingFlashcard.setCorrect(flashcard.getCorrect());
+                }
                 if (flashcard.getGlobalRating() != null) {
                     existingFlashcard.setGlobalRating(flashcard.getGlobalRating());
                 }

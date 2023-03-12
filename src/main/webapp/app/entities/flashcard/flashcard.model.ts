@@ -5,6 +5,7 @@ export interface IFlashcard {
   question?: string | null;
   answer?: string | null;
   hint?: string | null;
+  correct?: boolean | null;
   globalRating?: number | null;
   tag?: Pick<ITag, 'id'> | null;
 }

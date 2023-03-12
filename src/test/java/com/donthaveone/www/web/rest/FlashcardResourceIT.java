@@ -38,6 +38,9 @@ class FlashcardResourceIT {
     private static final String DEFAULT_HINT = "AAAAAAAAAA";
     private static final String UPDATED_HINT = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_CORRECT = false;
+    private static final Boolean UPDATED_CORRECT = true;
+
     private static final Integer DEFAULT_GLOBAL_RATING = 1;
     private static final Integer UPDATED_GLOBAL_RATING = 2;
 
@@ -69,6 +72,7 @@ class FlashcardResourceIT {
             .question(DEFAULT_QUESTION)
             .answer(DEFAULT_ANSWER)
             .hint(DEFAULT_HINT)
+            .correct(DEFAULT_CORRECT)
             .globalRating(DEFAULT_GLOBAL_RATING);
         return flashcard;
     }
@@ -84,6 +88,7 @@ class FlashcardResourceIT {
             .question(UPDATED_QUESTION)
             .answer(UPDATED_ANSWER)
             .hint(UPDATED_HINT)
+            .correct(UPDATED_CORRECT)
             .globalRating(UPDATED_GLOBAL_RATING);
         return flashcard;
     }
@@ -109,6 +114,7 @@ class FlashcardResourceIT {
         assertThat(testFlashcard.getQuestion()).isEqualTo(DEFAULT_QUESTION);
         assertThat(testFlashcard.getAnswer()).isEqualTo(DEFAULT_ANSWER);
         assertThat(testFlashcard.getHint()).isEqualTo(DEFAULT_HINT);
+        assertThat(testFlashcard.getCorrect()).isEqualTo(DEFAULT_CORRECT);
         assertThat(testFlashcard.getGlobalRating()).isEqualTo(DEFAULT_GLOBAL_RATING);
     }
 
@@ -179,6 +185,7 @@ class FlashcardResourceIT {
             .andExpect(jsonPath("$.[*].question").value(hasItem(DEFAULT_QUESTION)))
             .andExpect(jsonPath("$.[*].answer").value(hasItem(DEFAULT_ANSWER)))
             .andExpect(jsonPath("$.[*].hint").value(hasItem(DEFAULT_HINT)))
+            .andExpect(jsonPath("$.[*].correct").value(hasItem(DEFAULT_CORRECT.booleanValue())))
             .andExpect(jsonPath("$.[*].globalRating").value(hasItem(DEFAULT_GLOBAL_RATING)));
     }
 
@@ -197,6 +204,7 @@ class FlashcardResourceIT {
             .andExpect(jsonPath("$.question").value(DEFAULT_QUESTION))
             .andExpect(jsonPath("$.answer").value(DEFAULT_ANSWER))
             .andExpect(jsonPath("$.hint").value(DEFAULT_HINT))
+            .andExpect(jsonPath("$.correct").value(DEFAULT_CORRECT.booleanValue()))
             .andExpect(jsonPath("$.globalRating").value(DEFAULT_GLOBAL_RATING));
     }
 
@@ -219,7 +227,12 @@ class FlashcardResourceIT {
         Flashcard updatedFlashcard = flashcardRepository.findById(flashcard.getId()).get();
         // Disconnect from session so that the updates on updatedFlashcard are not directly saved in db
         em.detach(updatedFlashcard);
-        updatedFlashcard.question(UPDATED_QUESTION).answer(UPDATED_ANSWER).hint(UPDATED_HINT).globalRating(UPDATED_GLOBAL_RATING);
+        updatedFlashcard
+            .question(UPDATED_QUESTION)
+            .answer(UPDATED_ANSWER)
+            .hint(UPDATED_HINT)
+            .correct(UPDATED_CORRECT)
+            .globalRating(UPDATED_GLOBAL_RATING);
 
         restFlashcardMockMvc
             .perform(
@@ -236,6 +249,7 @@ class FlashcardResourceIT {
         assertThat(testFlashcard.getQuestion()).isEqualTo(UPDATED_QUESTION);
         assertThat(testFlashcard.getAnswer()).isEqualTo(UPDATED_ANSWER);
         assertThat(testFlashcard.getHint()).isEqualTo(UPDATED_HINT);
+        assertThat(testFlashcard.getCorrect()).isEqualTo(UPDATED_CORRECT);
         assertThat(testFlashcard.getGlobalRating()).isEqualTo(UPDATED_GLOBAL_RATING);
     }
 
@@ -307,7 +321,7 @@ class FlashcardResourceIT {
         Flashcard partialUpdatedFlashcard = new Flashcard();
         partialUpdatedFlashcard.setId(flashcard.getId());
 
-        partialUpdatedFlashcard.answer(UPDATED_ANSWER).globalRating(UPDATED_GLOBAL_RATING);
+        partialUpdatedFlashcard.answer(UPDATED_ANSWER).correct(UPDATED_CORRECT);
 
         restFlashcardMockMvc
             .perform(
@@ -324,7 +338,8 @@ class FlashcardResourceIT {
         assertThat(testFlashcard.getQuestion()).isEqualTo(DEFAULT_QUESTION);
         assertThat(testFlashcard.getAnswer()).isEqualTo(UPDATED_ANSWER);
         assertThat(testFlashcard.getHint()).isEqualTo(DEFAULT_HINT);
-        assertThat(testFlashcard.getGlobalRating()).isEqualTo(UPDATED_GLOBAL_RATING);
+        assertThat(testFlashcard.getCorrect()).isEqualTo(UPDATED_CORRECT);
+        assertThat(testFlashcard.getGlobalRating()).isEqualTo(DEFAULT_GLOBAL_RATING);
     }
 
     @Test
@@ -339,7 +354,12 @@ class FlashcardResourceIT {
         Flashcard partialUpdatedFlashcard = new Flashcard();
         partialUpdatedFlashcard.setId(flashcard.getId());
 
-        partialUpdatedFlashcard.question(UPDATED_QUESTION).answer(UPDATED_ANSWER).hint(UPDATED_HINT).globalRating(UPDATED_GLOBAL_RATING);
+        partialUpdatedFlashcard
+            .question(UPDATED_QUESTION)
+            .answer(UPDATED_ANSWER)
+            .hint(UPDATED_HINT)
+            .correct(UPDATED_CORRECT)
+            .globalRating(UPDATED_GLOBAL_RATING);
 
         restFlashcardMockMvc
             .perform(
@@ -356,6 +376,7 @@ class FlashcardResourceIT {
         assertThat(testFlashcard.getQuestion()).isEqualTo(UPDATED_QUESTION);
         assertThat(testFlashcard.getAnswer()).isEqualTo(UPDATED_ANSWER);
         assertThat(testFlashcard.getHint()).isEqualTo(UPDATED_HINT);
+        assertThat(testFlashcard.getCorrect()).isEqualTo(UPDATED_CORRECT);
         assertThat(testFlashcard.getGlobalRating()).isEqualTo(UPDATED_GLOBAL_RATING);
     }
 

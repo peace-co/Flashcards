@@ -7,23 +7,24 @@ export const sampleWithRequiredData: IFlashcard = {
 };
 
 export const sampleWithPartialData: IFlashcard = {
-  id: 40110,
-  question: 'IB Investment',
-  answer: 'Phased',
-  hint: 'Unbranded Marketing Vermont',
+  id: 35596,
+  question: 'compressing channels Phased',
+  answer: 'Unbranded Marketing Vermont',
+  hint: 'program',
 };
 
 export const sampleWithFullData: IFlashcard = {
-  id: 3372,
-  question: 'transmitting SDD Pizza',
-  answer: 'SAS deliver hybrid',
-  hint: 'Digitized Madagascar virtual',
-  globalRating: 66506,
+  id: 95695,
+  question: 'Fantastic JBOD SAS',
+  answer: 'Northern Berkshire',
+  hint: 'pink',
+  correct: true,
+  globalRating: 25627,
 };
 
 export const sampleWithNewData: NewFlashcard = {
-  question: 'Marketing',
-  answer: 'calculating',
+  question: 'holistic Tasty',
+  answer: 'Streamlined Maryland Lodge',
   id: null,
 };
 

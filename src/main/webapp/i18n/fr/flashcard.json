@@ -21,6 +21,7 @@
       "question": "Question",
       "answer": "Answer",
       "hint": "Hint",
+      "correct": "Correct",
       "globalRating": "Global Rating",
       "tag": "Tag"
     }

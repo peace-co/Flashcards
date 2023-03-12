@@ -35,6 +35,9 @@ public class Flashcard implements Serializable {
     @Column(name = "hint")
     private String hint;
 
+    @Column(name = "correct")
+    private Boolean correct;
+
     @Column(name = "global_rating")
     private Integer globalRating;
 
@@ -96,6 +99,19 @@ public class Flashcard implements Serializable {
         this.hint = hint;
     }
 
+    public Boolean getCorrect() {
+        return this.correct;
+    }
+
+    public Flashcard correct(Boolean correct) {
+        this.setCorrect(correct);
+        return this;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
+    }
+
     public Integer getGlobalRating() {
         return this.globalRating;
     }
@@ -149,6 +165,7 @@ public class Flashcard implements Serializable {
             ", question='" + getQuestion() + "'" +
             ", answer='" + getAnswer() + "'" +
             ", hint='" + getHint() + "'" +
+            ", correct='" + getCorrect() + "'" +
             ", globalRating=" + getGlobalRating() +
             "}";
     }

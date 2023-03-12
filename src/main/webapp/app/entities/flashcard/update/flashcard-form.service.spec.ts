@@ -23,6 +23,7 @@ describe('Flashcard Form Service', () => {
             question: expect.any(Object),
             answer: expect.any(Object),
             hint: expect.any(Object),
+            correct: expect.any(Object),
             globalRating: expect.any(Object),
             tag: expect.any(Object),
           })
@@ -38,6 +39,7 @@ describe('Flashcard Form Service', () => {
             question: expect.any(Object),
             answer: expect.any(Object),
             hint: expect.any(Object),
+            correct: expect.any(Object),
             globalRating: expect.any(Object),
             tag: expect.any(Object),
           })
