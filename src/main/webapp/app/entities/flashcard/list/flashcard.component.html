@@ -7,6 +7,10 @@
         <fa-icon icon="eye"></fa-icon>
         <span jhiTranslate="flashcardsApp.flashcardViewer.home.title">Flashcard Viewer</span>
       </button>
+      <button class="btn btn-info me-2" [routerLink]="['/flashcard/selector']">
+        <fa-icon icon="eye"></fa-icon>
+        <span jhiTranslate="flashcardsApp.flashcardSelector.home.title">Flashcard Selector</span>
+      </button>
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="flashcardsApp.flashcard.home.refreshListLabel">Refresh list</span>

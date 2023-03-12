@@ -8,6 +8,7 @@
       "entities": {
         "main": "Entities",
         "flashcardViewer": "Flashcard Viewer",
+        "flashcardSelector": "Flashcard Selector",
         "flashcard": "Flashcard",
         "tag": "Tag",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"

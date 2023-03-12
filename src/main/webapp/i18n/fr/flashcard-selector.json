@@ -1,0 +1,21 @@
+{
+  "flashcardsApp": {
+    "flashcardSelector": {
+      "home": {
+        "title": "Flashcard Selector",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Flashcard erstellen",
+        "createOrEditLabel": "Flashcard erstellen oder bearbeiten",
+        "notFound": "Keine Flashcards gefunden"
+      },
+      "id": "ID",
+      "question": "Question",
+      "answer": "Answer",
+      "hint": "Hint",
+      "globalRating": "Global Rating",
+      "tag": "Tag",
+      "next": "Next Flashcard",
+      "previous": "Previous Flashcard"
+    }
+  }
+}
