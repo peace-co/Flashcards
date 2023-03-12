@@ -10,6 +10,7 @@ import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/co
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { EntityArrayResponseType, FlashcardService } from '../service/flashcard.service';
 import { FlashcardDeleteDialogComponent } from '../delete/flashcard-delete-dialog.component';
+import { ITag } from 'app/entities/tag/tag.model';
 
 @Component({
   selector: 'jhi-flashcard',
