@@ -37,7 +37,7 @@
         <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
         <dd>
           <div *ngIf="flashcard.tag">
-            <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ flashcard.tag.id }}</a>
+            <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ tag?.name }}</a>
           </div>
         </dd>
       </dl>

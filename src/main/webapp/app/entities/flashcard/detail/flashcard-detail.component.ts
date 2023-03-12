@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ITag } from 'app/entities/tag/tag.model';
 
 import { IFlashcard } from '../flashcard.model';
 
@@ -9,12 +10,15 @@ import { IFlashcard } from '../flashcard.model';
 })
 export class FlashcardDetailComponent implements OnInit {
   flashcard: IFlashcard | null = null;
+  tag: ITag | null = null;
 
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ flashcard }) => {
       this.flashcard = flashcard;
+      this.tag = flashcard.tag;
+      console.log('flashcard: ', flashcard);
     });
   }
 
