@@ -47,6 +47,13 @@ export class TagService {
     return tag.id;
   }
 
+  /**
+   * Tells angular how to compare updated elements with the elements previously in the list.
+   * It allows maintaining selection of elements after their reference changes following an update.
+   * @param o1 First element to compare.
+   * @param o2 Second element to compare.
+   * @returns Result of the comparison.
+   */
   compareTag(o1: Pick<ITag, 'id'> | null, o2: Pick<ITag, 'id'> | null): boolean {
     return o1 && o2 ? this.getTagIdentifier(o1) === this.getTagIdentifier(o2) : o1 === o2;
   }

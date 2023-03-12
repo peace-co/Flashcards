@@ -18,6 +18,7 @@ export class FlashcardUpdateComponent implements OnInit {
   isSaving = false;
   flashcard: IFlashcard | null = null;
 
+  // Collection of all the Tag objects, also used for comparing to selected Tag objects.
   tagsSharedCollection: ITag[] = [];
 
   editForm: FlashcardFormGroup = this.flashcardFormService.createFlashcardFormGroup();

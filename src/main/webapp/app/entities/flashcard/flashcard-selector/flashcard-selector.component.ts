@@ -12,6 +12,7 @@ import { IFlashcard } from '../flashcard.model';
 export class FlashcardSelectorComponent implements OnInit {
   flashcard: IFlashcard | null = null;
   tags: ITag[] | null = null;
+  selectedTags: ITag[] | null = null;
 
   constructor(protected activatedRoute: ActivatedRoute, public router: Router, protected tagService: TagService) {}
 
@@ -45,7 +46,7 @@ export class FlashcardSelectorComponent implements OnInit {
   }
 
   onStudy() {
-    console.log('onStudy: ');
+    console.log('onStudy, selectedTags: ', this.selectedTags);
     this.handleNavigation();
     // const selects = document.querySelectorAll('select');
     // const optgroups = selects[0].querySelectorAll('optgroup');
