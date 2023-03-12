@@ -26,18 +26,18 @@
         <dd>
           <span>{{ flashcard.hint }}</span>
         </dd>
-        <dt><span jhiTranslate="flashcardsApp.flashcard.correct">Correct</span></dt>
+        <!-- <dt><span jhiTranslate="flashcardsApp.flashcard.correct">Correct</span></dt>
         <dd>
           <span>{{ flashcard.correct }}</span>
-        </dd>
+        </dd> -->
         <dt><span jhiTranslate="flashcardsApp.flashcard.globalRating">Global Rating</span></dt>
         <dd>
           <span>{{ flashcard.globalRating }}</span>
         </dd>
         <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
         <dd>
-          <span *ngFor="let tag of flashcard.tags; let last = last">
-            <a [routerLink]="['/tag', tag.id, 'view']">{{ tag.id }}</a
+          <span *ngFor="let tag of tags; let last = last">
+            <a [routerLink]="['/tag', tag.id, 'view']">{{ tag.name }}</a
             >{{ last ? '' : ', ' }}
           </span>
         </dd>

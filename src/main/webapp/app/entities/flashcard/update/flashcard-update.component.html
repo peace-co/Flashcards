@@ -62,7 +62,7 @@
         <div class="row mb-3">
           <label jhiTranslate="flashcardsApp.flashcard.tag" for="field_tags">Tag</label>
           <select class="form-control" id="field_tags" data-cy="tag" multiple name="tags" formControlName="tags" [compareWith]="compareTag">
-            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.id }}</option>
+            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.name }}</option>
           </select>
         </div>
       </div>

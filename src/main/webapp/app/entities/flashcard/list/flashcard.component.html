@@ -60,18 +60,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="correct">
+          <!-- <th scope="col" jhiSortBy="correct">
             <div class="d-flex">
               <span jhiTranslate="flashcardsApp.flashcard.correct">Correct</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
-          <!-- <th scope="col" jhiSortBy="globalRating">
+          </th> -->
+          <th scope="col" jhiSortBy="globalRating">
             <div class="d-flex">
               <span jhiTranslate="flashcardsApp.flashcard.globalRating">Global Rating</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -83,7 +83,7 @@
           <td>{{ flashcard.question }}</td>
           <td>{{ flashcard.answer }}</td>
           <td>{{ flashcard.hint }}</td>
-          <td>{{ flashcard.correct }}</td>
+          <!-- <td>{{ flashcard.correct }}</td> -->
           <td>{{ flashcard.globalRating }}</td>
           <td class="text-end">
             <div class="btn-group">
