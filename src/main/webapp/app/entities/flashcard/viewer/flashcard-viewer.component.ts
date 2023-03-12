@@ -18,6 +18,7 @@ import { FlashcardDeleteDialogComponent } from '../delete/flashcard-delete-dialo
 export class FlashcardViewerComponent implements OnInit {
   flashcards?: IFlashcard[];
   flashcard?: IFlashcard;
+  flashcardIndex = 0;
   isLoading = false;
 
   predicate = 'id';
@@ -50,6 +51,12 @@ export class FlashcardViewerComponent implements OnInit {
     console.log('this.flashcard: ', this.flashcard);
 
     // this.load();
+  }
+
+  showNext() {
+    if (this.flashcards) {
+      this.flashcard = this.flashcards[++this.flashcardIndex];
+    }
   }
 
   delete(flashcard: IFlashcard): void {
@@ -105,6 +112,7 @@ export class FlashcardViewerComponent implements OnInit {
     console.log('dataFromBody: ', dataFromBody);
     this.flashcards = dataFromBody;
     this.flashcard = this.flashcards[0];
+    this.flashcardIndex = 0;
   }
 
   protected fillComponentAttributesFromResponseBody(data: IFlashcard[] | null): IFlashcard[] {

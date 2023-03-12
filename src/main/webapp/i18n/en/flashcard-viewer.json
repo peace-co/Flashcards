@@ -22,7 +22,8 @@
       "answer": "Answer",
       "hint": "Hint",
       "globalRating": "Global Rating",
-      "tag": "Tag"
+      "tag": "Tag",
+      "next": "Next Flashcard"
     }
   }
 }
