@@ -26,7 +26,10 @@
       "next": "Next Flashcard",
       "previous": "Previous Flashcard",
       "showAnswer": "Show",
-      "showHint": "Show"
+      "showHint": "Show",
+      "mark": "Mark",
+      "markCorrect": "Correct",
+      "markIncorrect": "Incorrect"
     }
   }
 }

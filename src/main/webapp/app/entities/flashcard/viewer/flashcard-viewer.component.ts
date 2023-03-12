@@ -25,6 +25,10 @@ export class FlashcardViewerComponent implements OnInit {
   showHint = false;
   timeLeft: number = 300;
   interval: any;
+  correctNum = 0;
+  incorrectNum = 0;
+  marked = false;
+  markedValue = '';
 
   predicate = 'id';
   ascending = true;
@@ -76,6 +80,9 @@ export class FlashcardViewerComponent implements OnInit {
       this.flashcard = this.flashcards[this.flashcardIndex];
       this.showAnswer = false;
       this.showHint = false;
+
+      this.marked = false;
+      this.markedValue = '';
     }
   }
 
@@ -87,6 +94,9 @@ export class FlashcardViewerComponent implements OnInit {
       this.flashcard = this.flashcards[this.flashcardIndex];
       this.showAnswer = false;
       this.showHint = false;
+
+      this.marked = false;
+      this.markedValue = '';
     }
   }
 
@@ -96,6 +106,21 @@ export class FlashcardViewerComponent implements OnInit {
 
   onShowHint() {
     this.showHint = true;
+  }
+
+  onMarkCorrect() {
+    // TODO: Only allow marking after answer is shown.
+    this.marked = true;
+    this.markedValue = 'correct.';
+    this.correctNum++;
+    console.log('correctNum: ', this.correctNum);
+  }
+
+  onMarkIncorrect() {
+    this.marked = true;
+    this.markedValue = 'incorrect.';
+    this.incorrectNum++;
+    console.log('incorrectNum: ', this.incorrectNum);
   }
 
   delete(flashcard: IFlashcard): void {

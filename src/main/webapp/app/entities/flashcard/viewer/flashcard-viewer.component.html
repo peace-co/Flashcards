@@ -66,6 +66,18 @@
       <dd>
         <span>{{ flashcard.globalRating }}</span>
       </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcardViewer.mark">Mark answer</span></dt>
+      <dd>
+        <button *ngIf="!marked" class="btn btn-success btn-sm me-2" (click)="onMarkCorrect()" [disabled]="isLoading">
+          <fa-icon icon="check"></fa-icon>
+          <span jhiTranslate="flashcardsApp.flashcardViewer.markCorrect">Correct</span>
+        </button>
+        <button *ngIf="!marked" class="btn btn-danger btn-sm me-2" (click)="onMarkIncorrect()" [disabled]="isLoading">
+          <fa-icon icon="xmark"></fa-icon>
+          <span jhiTranslate="flashcardsApp.flashcardViewer.markIncorrect">Incorrect</span>
+        </button>
+        <span *ngIf="marked"> Marked {{ markedValue }} </span>
+      </dd>
       <!-- <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
       <dd>
         <div *ngIf="flashcard.tag">
