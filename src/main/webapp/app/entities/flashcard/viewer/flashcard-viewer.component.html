@@ -3,12 +3,12 @@
     <span>Flashcard Viewer</span>
 
     <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="showPrevious()" [disabled]="isLoading">
-        <fa-icon icon="chevron-left" [spin]="isLoading"></fa-icon>
+      <button class="btn btn-info me-2" (click)="onShowPrevious()" [disabled]="isLoading">
+        <fa-icon icon="chevron-left"></fa-icon>
         <span jhiTranslate="flashcardsApp.flashcardViewer.previous">Previous Flashcard</span>
       </button>
-      <button class="btn btn-info me-2" (click)="showNext()" [disabled]="isLoading">
-        <fa-icon icon="chevron-right" [spin]="isLoading"></fa-icon>
+      <button class="btn btn-info me-2" (click)="onShowNext()" [disabled]="isLoading">
+        <fa-icon icon="chevron-right"></fa-icon>
         <span jhiTranslate="flashcardsApp.flashcardViewer.next">Next Flashcard</span>
       </button>
 
@@ -45,7 +45,11 @@
       </dd>
       <dt><span jhiTranslate="flashcardsApp.flashcard.answer">Answer</span></dt>
       <dd>
-        <span>{{ flashcard.answer }}</span>
+        <button *ngIf="!showAnswer" class="btn btn-info btn-sm me-2" (click)="onShowAnswer()" [disabled]="isLoading">
+          <fa-icon icon="eye"></fa-icon>
+          <span jhiTranslate="flashcardsApp.flashcardViewer.showAnswer">Show</span>
+        </button>
+        <span *ngIf="showAnswer">{{ flashcard.answer }}</span>
       </dd>
       <dt><span jhiTranslate="flashcardsApp.flashcard.hint">Hint</span></dt>
       <dd>

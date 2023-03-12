@@ -24,7 +24,8 @@
       "globalRating": "Global Rating",
       "tag": "Tag",
       "next": "Next Flashcard",
-      "previous": "Previous Flashcard"
+      "previous": "Previous Flashcard",
+      "showAnswer": "Show"
     }
   }
 }

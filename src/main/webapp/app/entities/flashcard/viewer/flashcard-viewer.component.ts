@@ -19,7 +19,9 @@ export class FlashcardViewerComponent implements OnInit {
   flashcards?: IFlashcard[];
   flashcard?: IFlashcard;
   flashcardIndex = 0;
+
   isLoading = false;
+  showAnswer = false;
 
   predicate = 'id';
   ascending = true;
@@ -53,22 +55,28 @@ export class FlashcardViewerComponent implements OnInit {
     // this.load();
   }
 
-  showNext() {
+  onShowNext() {
     if (this.flashcards) {
       if (this.flashcardIndex < this.flashcards.length - 1) {
         this.flashcardIndex += 1;
       }
       this.flashcard = this.flashcards[this.flashcardIndex];
+      this.showAnswer = false;
     }
   }
 
-  showPrevious() {
+  onShowPrevious() {
     if (this.flashcards) {
       if (this.flashcardIndex > 0) {
         this.flashcardIndex -= 1;
       }
       this.flashcard = this.flashcards[this.flashcardIndex];
+      this.showAnswer = false;
     }
+  }
+
+  onShowAnswer() {
+    this.showAnswer = true;
   }
 
   delete(flashcard: IFlashcard): void {
