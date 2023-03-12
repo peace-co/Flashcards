@@ -8,10 +8,10 @@
       <div>
         <jhi-alert-error></jhi-alert-error>
 
-        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+        <!-- <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
           <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-        </div>
+        </div> -->
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="flashcardsApp.flashcard.question" for="field_question">Question</label>
@@ -42,12 +42,7 @@
           <input type="text" class="form-control" name="hint" id="field_hint" data-cy="hint" formControlName="hint" />
         </div>
 
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.correct" for="field_correct">Correct</label>
-          <input type="checkbox" class="form-check" name="correct" id="field_correct" data-cy="correct" formControlName="correct" />
-        </div>
-
-        <div class="row mb-3">
+        <!-- <div class="row mb-3">
           <label class="form-label" jhiTranslate="flashcardsApp.flashcard.globalRating" for="field_globalRating">Global Rating</label>
           <input
             type="number"
@@ -57,13 +52,13 @@
             data-cy="globalRating"
             formControlName="globalRating"
           />
-        </div>
+        </div> -->
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.tag" for="field_tag">Tag</label>
+          <label class="form-label" jhiTranslate="flashcardsApp.flashcard.tag" for="field_tag">Tags</label>
           <select class="form-control" id="field_tag" data-cy="tag" name="tag" formControlName="tag" [compareWith]="compareTag">
             <option [ngValue]="null"></option>
-            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.id }}</option>
+            <option [ngValue]="tagOption" *ngFor="let tagOption of tagsSharedCollection">{{ tagOption.name }}</option>
           </select>
         </div>
       </div>
