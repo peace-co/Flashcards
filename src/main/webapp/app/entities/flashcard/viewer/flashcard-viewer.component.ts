@@ -47,6 +47,17 @@ export class FlashcardViewerComponent implements OnInit {
   trackId = (_index: number, item: IFlashcard): number => this.flashcardService.getFlashcardIdentifier(item);
 
   ngOnInit(): void {
+    // TODO: move permission request to settings
+    if (Notification.permission != 'granted') {
+      Notification.requestPermission().then(result => {
+        // console.log(result);
+      });
+    }
+    // TODO: add time trigger and move to settings
+    // const img = '/to-do-notifications/img/icon-128.png';
+    const text = 'Click to open the flashcard application.';
+    const notification = new Notification('Flashcards: Time to study!', { body: text });
+
     const queryObject = {
       page: 0,
       size: 20,
