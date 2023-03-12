@@ -24,11 +24,42 @@
 
   <jhi-alert></jhi-alert>
 
+  <div *ngIf="flashcard">
+    <dl class="row-md jh-entity-details">
+      <dt><span jhiTranslate="global.field.id">ID</span></dt>
+      <dd>
+        <span>{{ flashcard.id }}</span>
+      </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcard.question">Question</span></dt>
+      <dd>
+        <span>{{ flashcard.question }}</span>
+      </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcard.answer">Answer</span></dt>
+      <dd>
+        <span>{{ flashcard.answer }}</span>
+      </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcard.hint">Hint</span></dt>
+      <dd>
+        <span>{{ flashcard.hint }}</span>
+      </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcard.globalRating">Global Rating</span></dt>
+      <dd>
+        <span>{{ flashcard.globalRating }}</span>
+      </dd>
+      <!-- <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
+      <dd>
+        <div *ngIf="flashcard.tag">
+          <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ flashcard.tag.id }}</a>
+        </div>
+      </dd> -->
+    </dl>
+  </div>
+
   <div class="alert alert-warning" id="no-result" *ngIf="flashcards?.length === 0">
     <span jhiTranslate="flashcardsApp.flashcard.home.notFound">No Flashcards found</span>
   </div>
 
-  <div class="table-responsive table-entities" id="entities" *ngIf="flashcards && flashcards.length > 0">
+  <!-- <div class="table-responsive table-entities" id="entities" *ngIf="flashcards && flashcards.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
@@ -116,7 +147,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 
   <div *ngIf="flashcards && flashcards.length > 0">
     <div class="d-flex justify-content-center">

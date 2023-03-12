@@ -17,6 +17,7 @@ import { FlashcardDeleteDialogComponent } from '../delete/flashcard-delete-dialo
 })
 export class FlashcardViewerComponent implements OnInit {
   flashcards?: IFlashcard[];
+  flashcard?: IFlashcard;
   isLoading = false;
 
   predicate = 'id';
@@ -36,7 +37,19 @@ export class FlashcardViewerComponent implements OnInit {
   trackId = (_index: number, item: IFlashcard): number => this.flashcardService.getFlashcardIdentifier(item);
 
   ngOnInit(): void {
-    this.load();
+    const queryObject = {
+      page: 0,
+      size: 20,
+      sort: ['id,asc'],
+    };
+    this.flashcardService.query(queryObject).subscribe({
+      next: (res: EntityArrayResponseType) => {
+        this.onResponseSuccess(res);
+      },
+    });
+    console.log('this.flashcard: ', this.flashcard);
+
+    // this.load();
   }
 
   delete(flashcard: IFlashcard): void {
@@ -89,7 +102,9 @@ export class FlashcardViewerComponent implements OnInit {
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     this.fillComponentAttributesFromResponseHeader(response.headers);
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
+    console.log('dataFromBody: ', dataFromBody);
     this.flashcards = dataFromBody;
+    this.flashcard = this.flashcards[0];
   }
 
   protected fillComponentAttributesFromResponseBody(data: IFlashcard[] | null): IFlashcard[] {
