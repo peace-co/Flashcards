@@ -60,10 +60,7 @@ export class FlashcardSelectorComponent implements OnInit {
       sort: ['id,asc'],
     };
 
-    this.router.navigate(['./flashcard/viewer/study'], {
-      // relativeTo: this.activatedRoute,
-      // queryParams: queryParamsObj,
-    });
+    this.router.navigateByUrl('flashcard/viewer/study', { state: { tags: this.selectedTags } });
   }
 
   // protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {

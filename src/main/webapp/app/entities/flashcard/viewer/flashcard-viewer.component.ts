@@ -72,6 +72,8 @@ export class FlashcardViewerComponent implements OnInit {
 
     if (this.router.url === '/flashcard/viewer/study') {
       this.study = true;
+      // this.router.getCurrentNavigation().extras.state
+      console.log('history.state: ', history.state);
     }
 
     console.log('this.flashcard, this.router.url, this.study: ', this.flashcard, this.router.url, this.study);
