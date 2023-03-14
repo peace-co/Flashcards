@@ -2,11 +2,11 @@
 Main page styles
 ========================================================================== */
 
-.hipster {
+.front-page-image {
   display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_3.svg') no-repeat center top;
+  width: 800px;
+  height: 532px;
+  background: url('../../content/images/college_reading.preview.jpg') no-repeat center top;
   background-size: contain;
 }
 
@@ -16,8 +16,8 @@ Main page styles
   only screen and (-o-min-device-pixel-ratio: 2/1),
   only screen and (min-resolution: 192dpi),
   only screen and (min-resolution: 2dppx) {
-  .hipster {
-    background: url('../../content/images/jhipster_family_member_3.svg') no-repeat center top;
+  .front-page-image {
+    background: url('../../content/images/college_reading.preview.jpg') no-repeat center top;
     background-size: contain;
   }
 }
