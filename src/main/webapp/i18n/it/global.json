@@ -51,9 +51,8 @@
     "messages": {
       "info": {
         "authenticated": {
-          "prefix": "Se vuoi ",
-          "link": "accedere",
-          "suffix": ", puoi provare gli account di default: <br/> - Amministratore (user = \"admin\" e la password = \"admin\") <br/> - utente (user = \"user\" e la password = \"user\")"
+          "link": "Sign in ",
+          "suffix": "to continue"
         },
         "register": {
           "noaccount": "Non hai ancora un account?",

@@ -1,19 +1,9 @@
 {
   "home": {
-    "title": "Benvenuto, Java Hipster!",
-    "subtitle": "Questa è la tua home page",
+    "title": "Welcome to the Flashcards application!",
+    "subtitle": "Your place for learning.",
     "logged": {
       "message": "Autenticato come \"{{username}}\"."
-    },
-    "question": "In caso di domande su JHipster:",
-    "link": {
-      "homepage": "Homepage JHipster",
-      "stackoverflow": "JHipster su Stack Overflow",
-      "bugtracker": "JHipster tracciamento errori",
-      "chat": "Chat room pubblica di JHipster",
-      "follow": "segui @jhipster su Twitter"
-    },
-    "like": "Se ti piace JHipster, non dimenticarti di darci una stella su",
-    "github": "GitHub"
+    }
   }
 }

@@ -56,8 +56,8 @@
           "suffix": ", vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\")."
         },
         "register": {
-          "noaccount": "Vous n'avez pas encore de compte ?",
-          "link": "Créer un compte"
+          "link": "Sign in ",
+          "suffix": "to continue"
         }
       },
       "error": {

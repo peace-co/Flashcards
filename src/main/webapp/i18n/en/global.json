@@ -51,7 +51,6 @@
     "messages": {
       "info": {
         "authenticated": {
-          "prefix": "If you want to ",
           "link": "Sign in ",
           "suffix": "to continue"
         },
