@@ -6,7 +6,7 @@
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Entities",
+        "main": "Applicatons",
         "flashcardViewer": "Flashcard Viewer",
         "flashcardSelector": "Flashcard Selector",
         "flashcard": "Flashcard",
@@ -52,7 +52,8 @@
       "info": {
         "authenticated": {
           "link": "Sign in ",
-          "suffix": "to continue"
+          "suffix": "to continue",
+          "test": "To checkout the app without creating an account, <br />use login=\"user\" and password=\"user\".<br />"
         },
         "register": {
           "noaccount": "You don't have an account yet?",

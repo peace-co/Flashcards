@@ -16,8 +16,11 @@
       </div>
 
       <div class="alert alert-warning" *ngSwitchCase="false">
+        <span jhiTranslate="global.messages.info.authenticated.test"
+          >To checkout the app without creating an account, <br />use login="user" and password="user".<br
+        /></span>
         <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">Sign in </a>
-        <span jhiTranslate="global.messages.info.authenticated.suffix">to continue</span>
+        <span jhiTranslate="global.messages.info.authenticated.suffix">to continue.</span>
       </div>
 
       <div class="alert alert-warning" *ngSwitchCase="false">

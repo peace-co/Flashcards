@@ -52,7 +52,8 @@
       "info": {
         "authenticated": {
           "link": "Sign in ",
-          "suffix": "to continue"
+          "suffix": "to continue",
+          "test": "To checkout the app without creating an account, use login=\"user\" and password=\"user\"."
         },
         "register": {
           "noaccount": "¿Aún no tienes una cuenta?",

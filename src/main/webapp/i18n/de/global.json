@@ -52,7 +52,8 @@
       "info": {
         "authenticated": {
           "link": "Anmelden ",
-          "suffix": "damit Sie fortfahren können"
+          "suffix": "damit Sie fortfahren können",
+          "test": "Um die App auszuchecken, ohne ein Konto zu erstellen, <br />verwenden Sie login=\"user\" und password=\"user\".<br />"
         },
         "register": {
           "noaccount": "Sie haben noch keinen Zugang?",
