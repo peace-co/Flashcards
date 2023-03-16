@@ -7,5 +7,5 @@ This application is a work in progress. The goal is to create a study tool that 
 1. Install Java 11.
 2. Install [Node.js](https://nodejs.org/)
 3. Clone the repo.
-4. Run `npm start` and `gradlew` / `./gradlew`.
-5. Site with open at `http://localhost:9000`.
+4. Run `npm start` and `gradlew` or `./gradlew`.
+5. Site will open at `http://localhost:9000`.
