@@ -6,7 +6,9 @@
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Flashcard",
         "createOrEditLabel": "Create or edit a Flashcard",
-        "notFound": "No Flashcards found"
+        "notFound": "No Flashcards found",
+        "timeLeft": "Time left:",
+        "correct": "Correct:"
       },
       "created": "A new Flashcard is created with identifier {{ param }}",
       "updated": "A Flashcard is updated with identifier {{ param }}",

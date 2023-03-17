@@ -6,7 +6,9 @@
         "refreshListLabel": "Liste aktualisieren",
         "createLabel": "Flashcard erstellen",
         "createOrEditLabel": "Flashcard erstellen oder bearbeiten",
-        "notFound": "Keine Flashcards gefunden"
+        "notFound": "Keine Flashcards gefunden",
+        "timeLeft": "Verbleibende Zeit:",
+        "correct": "Richtig:"
       },
       "created": "Flashcard erstellt mit ID {{ param }}",
       "updated": "Flashcard aktualisiert mit ID {{ param }}",
