@@ -6,10 +6,10 @@
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Applicatons",
-        "flashcardViewer": "Flashcard Viewer",
-        "flashcardSelector": "Flashcard Selector",
-        "flashcard": "Flashcard",
+        "main": "Overviews",
+        "flashcardViewer": "Practice",
+        "flashcardSelector": "Choose",
+        "flashcard": "Flashcards",
         "tag": "Tag",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },

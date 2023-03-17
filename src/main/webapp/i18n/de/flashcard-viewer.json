@@ -2,7 +2,7 @@
   "flashcardsApp": {
     "flashcardViewer": {
       "home": {
-        "title": "Flashcard Viewer",
+        "title": "Übung",
         "refreshListLabel": "Liste aktualisieren",
         "createLabel": "Flashcard erstellen",
         "createOrEditLabel": "Flashcard erstellen oder bearbeiten",

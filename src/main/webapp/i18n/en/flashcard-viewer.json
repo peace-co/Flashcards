@@ -2,7 +2,7 @@
   "flashcardsApp": {
     "flashcardViewer": {
       "home": {
-        "title": "Flashcard Viewer",
+        "title": "Practice",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Flashcard",
         "createOrEditLabel": "Create or edit a Flashcard",

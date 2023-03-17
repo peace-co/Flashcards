@@ -28,6 +28,22 @@
           </a>
         </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/flashcard/viewer']" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="book-open"></fa-icon>
+              <span jhiTranslate="global.menu.entities.flashcardViewer">Practice</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['/flashcard/selector']" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="list-check"></fa-icon>
+              <span jhiTranslate="global.menu.entities.flashcardSelector">Choose</span>
+            </span>
+          </a>
+        </li>
         <li
           *ngSwitchCase="true"
           ngbDropdown
@@ -39,7 +55,7 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
             <span>
               <fa-icon icon="th-list"></fa-icon>
-              <span jhiTranslate="global.menu.entities.main">Applicatons</span>
+              <span jhiTranslate="global.menu.entities.main">Overviews</span>
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
@@ -51,8 +67,8 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.flashcard">Flashcard</span>
+                <fa-icon icon="book" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.flashcard">Flashcards</span>
               </a>
             </li>
             <li>
@@ -63,7 +79,7 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <fa-icon icon="tag" [fixedWidth]="true"></fa-icon>
                 <span jhiTranslate="global.menu.entities.tag">Tag</span>
               </a>
             </li>

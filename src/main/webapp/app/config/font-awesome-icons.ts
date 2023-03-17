@@ -1,6 +1,7 @@
 import {
   faArrowLeft,
   faAsterisk,
+  faListCheck,
   faBan,
   faBars,
   faBell,
@@ -31,6 +32,7 @@ import {
   faSortUp,
   faSync,
   faTachometerAlt,
+  faTag,
   faTasks,
   faThList,
   faTimes,
@@ -47,6 +49,7 @@ import {
 export const fontAwesomeIcons = [
   faArrowLeft,
   faAsterisk,
+  faListCheck,
   faBan,
   faBars,
   faBell,
@@ -77,6 +80,7 @@ export const fontAwesomeIcons = [
   faSortUp,
   faSync,
   faTachometerAlt,
+  faTag,
   faTasks,
   faThList,
   faTimes,
