@@ -37,6 +37,7 @@ export class FlashcardViewerComponent implements OnInit {
   itemsPerPage = ITEMS_PER_PAGE;
   totalItems = 0;
   page = 1;
+  totalCardsPlayed = 1;
 
   constructor(
     protected flashcardService: FlashcardService,
@@ -96,7 +97,10 @@ export class FlashcardViewerComponent implements OnInit {
       if (this.flashcardIndex < this.flashcards.length - 1) {
         this.flashcardIndex += 1;
       }
-      this.flashcard = this.flashcards[this.flashcardIndex];
+      if (this.flashcardIndex + 2 > this.totalCardsPlayed) {
+        this.totalCardsPlayed = this.flashcardIndex + 1;
+      }
+      this.flashcard = this.flashcards[this.flashcardIndex + 1];
       this.showAnswer = false;
       this.showHint = false;
 
