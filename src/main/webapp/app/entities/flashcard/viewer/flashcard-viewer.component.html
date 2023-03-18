@@ -20,7 +20,7 @@
 
   <jhi-alert></jhi-alert>
 
-  <div *ngIf="flashcard">
+  <div *ngIf="flashcard" (document:keydown.ArrowRight)="onShowNext()" (document:keydown.ArrowLeft)="onShowPrevious()">
     <div *ngIf="timeLeft">
       <span jhiTranslate="flashcardsApp.flashcardViewer.home.timeLeft">Time left:</span><span> {{ timeLeft | timeLeft }}</span>
     </div>
