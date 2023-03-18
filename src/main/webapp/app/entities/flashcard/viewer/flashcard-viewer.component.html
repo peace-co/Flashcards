@@ -48,10 +48,6 @@
         </button>
         <span *ngIf="showAnswer">{{ flashcard.answer }}</span>
       </dd>
-      <dt><span jhiTranslate="flashcardsApp.flashcard.globalRating">Global Rating</span></dt>
-      <dd>
-        <span>{{ flashcard.globalRating }}</span>
-      </dd>
       <dt><span jhiTranslate="flashcardsApp.flashcardViewer.mark">Mark answer</span></dt>
       <dd>
         <button *ngIf="!marked" class="btn btn-success btn-sm me-2" (click)="onMarkCorrect()" [disabled]="isLoading || !showAnswer">
@@ -75,23 +71,5 @@
 
   <div class="alert alert-warning" id="no-result" *ngIf="flashcards?.length === 0">
     <span jhiTranslate="flashcardsApp.flashcard.home.notFound">No Flashcards found</span>
-  </div>
-
-  <div *ngIf="flashcards && flashcards.length > 0">
-    <div class="d-flex justify-content-center">
-      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
-    </div>
-
-    <div class="d-flex justify-content-center">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [page]="page"
-        [pageSize]="itemsPerPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [boundaryLinks]="true"
-        (pageChange)="navigateToPage($event)"
-      ></ngb-pagination>
-    </div>
   </div>
 </div>
