@@ -26,6 +26,11 @@ public class FlashcardRepositoryWithBagRelationshipsImpl implements FlashcardRep
     }
 
     @Override
+    public Optional<List<Flashcard>> fetchBagRelationshipsByTags(Optional<List<Flashcard>> flashcards) {
+        return flashcards.map(this::fetchTags);
+    }
+
+    @Override
     public Page<Flashcard> fetchBagRelationships(Page<Flashcard> flashcards) {
         return new PageImpl<>(fetchBagRelationships(flashcards.getContent()), flashcards.getPageable(), flashcards.getTotalElements());
     }

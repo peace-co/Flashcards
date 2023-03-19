@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 public interface FlashcardRepositoryWithBagRelationships {
     Optional<Flashcard> fetchBagRelationships(Optional<Flashcard> flashcard);
 
+    Optional<List<Flashcard>> fetchBagRelationshipsByTags(Optional<List<Flashcard>> flashcards);
+
     List<Flashcard> fetchBagRelationships(List<Flashcard> flashcards);
 
     Page<Flashcard> fetchBagRelationships(Page<Flashcard> flashcards);
