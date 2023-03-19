@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data JPA repository for the Flashcard entity.
  *
- * When extending this class, extend FlashcardRepositoryWithBagRelationships too.
- * For more information refer to https://github.com/jhipster/generator-jhipster/issues/17990.
+ * When extending this class, extend FlashcardRepositoryWithBagRelationships
+ * too.
+ * For more information refer to
+ * https://github.com/jhipster/generator-jhipster/issues/17990.
  */
 @Repository
 public interface FlashcardRepository extends FlashcardRepositoryWithBagRelationships, JpaRepository<Flashcard, Long> {
@@ -25,7 +27,13 @@ public interface FlashcardRepository extends FlashcardRepositoryWithBagRelations
         return this.fetchBagRelationships(this.findAll());
     }
 
+    default Optional<List<Flashcard>> findAllByTagsIdInWithEagerRelationships(List<Long> tagIds) {
+        return this.fetchBagRelationshipsByTags(this.findAllByTagsIdIn(tagIds));
+    }
+
     default Page<Flashcard> findAllWithEagerRelationships(Pageable pageable) {
         return this.fetchBagRelationships(this.findAll(pageable));
     }
+
+    Optional<List<Flashcard>> findAllByTagsIdIn(List<Long> tagIds);
 }

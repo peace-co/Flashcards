@@ -181,6 +181,19 @@ public class FlashcardResource {
     }
 
     /**
+     * {@code GET /flashcards/tags/{tagIds}} : get the flashcards by tags.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+     *         of flashcards in body.
+     */
+    @GetMapping("/flashcards/tags/{tagIds}")
+    public ResponseEntity<List<Flashcard>> getAllFlashcardsByTags(@PathVariable List<Long> tagIds) {
+        log.debug("REST request to get a page of Flashcards by tags");
+        Optional<List<Flashcard>> flashcards = flashcardRepository.findAllByTagsIdInWithEagerRelationships(tagIds);
+        return ResponseUtil.wrapOrNotFound(flashcards);
+    }
+
+    /**
      * {@code GET  /flashcards/:id} : get the "id" flashcard.
      *
      * @param id the id of the flashcard to retrieve.
