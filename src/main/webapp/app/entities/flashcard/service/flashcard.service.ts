@@ -39,6 +39,10 @@ export class FlashcardService {
     return this.http.get<IFlashcard[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
+  findByTags(tagIds: number[]): Observable<EntityArrayResponseType> {
+    return this.http.get<IFlashcard[]>(`${this.resourceUrl}/tags/${tagIds}`, { observe: 'response' });
+  }
+
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
