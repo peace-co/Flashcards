@@ -37,7 +37,6 @@ export class FlashcardSelectorComponent implements OnInit {
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     // this.fillComponentAttributesFromResponseHeader(response.headers);
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    console.log('dataFromBody: ', dataFromBody);
     this.tags = dataFromBody;
   }
 
@@ -60,7 +59,7 @@ export class FlashcardSelectorComponent implements OnInit {
       sort: ['id,asc'],
     };
 
-    this.router.navigateByUrl('flashcard/viewer/study', { state: { tags: this.selectedTags } });
+    this.router.navigate(['flashcard/viewer/study', { tags: this.selectedTags?.map(t => t.id) }]);
   }
 
   // protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {
