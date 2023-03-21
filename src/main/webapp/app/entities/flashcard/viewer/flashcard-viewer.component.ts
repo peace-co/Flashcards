@@ -41,7 +41,7 @@ export class FlashcardViewerComponent implements OnInit {
 
   constructor(
     protected flashcardService: FlashcardService,
-    protected activatedRoute: ActivatedRoute,
+    protected route: ActivatedRoute,
     public router: Router,
     protected modalService: NgbModal
   ) {}
@@ -54,14 +54,28 @@ export class FlashcardViewerComponent implements OnInit {
       size: 20,
       sort: ['id,asc'],
     };
-    this.flashcardService.query(queryObject).subscribe({
-      next: (res: EntityArrayResponseType) => {
-        this.onResponseSuccess(res);
-      },
-    });
 
-    if (this.router.url === '/flashcard/viewer/study') {
+    let tags: number[] | undefined;
+    if (this.router.url.includes('study')) {
       this.study = true;
+      tags = this.route.snapshot.paramMap
+        .get('tags')
+        ?.split(',')
+        .map(t => Number(t));
+    }
+
+    if (this.study) {
+      this.flashcardService.findByTags(tags || []).subscribe({
+        next: (res: EntityArrayResponseType) => {
+          this.onResponseSuccess(res);
+        },
+      });
+    } else {
+      this.flashcardService.query(queryObject).subscribe({
+        next: (res: EntityArrayResponseType) => {
+          this.onResponseSuccess(res);
+        },
+      });
     }
     this.startTimer();
   }
@@ -162,7 +176,7 @@ export class FlashcardViewerComponent implements OnInit {
   }
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
-    return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
+    return combineLatest([this.route.queryParamMap, this.route.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
       switchMap(() => this.queryBackend(this.page, this.predicate, this.ascending))
     );
@@ -212,7 +226,7 @@ export class FlashcardViewerComponent implements OnInit {
     };
 
     this.router.navigate(['./'], {
-      relativeTo: this.activatedRoute,
+      relativeTo: this.route,
       queryParams: queryParamsObj,
     });
   }
