@@ -52,7 +52,7 @@
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entitySelectorBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
-      <button type="submit" (click)="onStudy()" class="btn btn-info" data-cy="entitySelectorStudyButton">
+      <button type="submit" (click)="onStudy()" class="btn btn-info" data-cy="entitySelectorStudyButton" [disabled]="!selectedTags?.length">
         <fa-icon icon="book-open"></fa-icon>&nbsp;<span jhiTranslate="entity.action.study">Study</span>
       </button>
 
