@@ -9,13 +9,13 @@
         "notFound": "Keine Flashcards gefunden"
       },
       "id": "ID",
-      "question": "Question",
-      "answer": "Answer",
-      "hint": "Hint",
-      "globalRating": "Global Rating",
+      "question": "Frage",
+      "answer": "Antworten",
+      "hint": "Hinweis",
+      "globalRating": "Globale Bewertung",
       "tag": "Tag",
-      "next": "Next Flashcard",
-      "previous": "Previous Flashcard"
+      "next": "Nächste Flashcard",
+      "previous": "Vorherige Flashcard"
     }
   }
 }

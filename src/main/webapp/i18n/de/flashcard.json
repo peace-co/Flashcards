@@ -18,11 +18,11 @@
         "title": "Flashcard"
       },
       "id": "ID",
-      "question": "Question",
-      "answer": "Answer",
-      "hint": "Hint",
-      "correct": "Correct",
-      "globalRating": "Global Rating",
+      "question": "Frage",
+      "answer": "Antworten",
+      "hint": "Hinweis",
+      "correct": "Richtig",
+      "globalRating": "Globale Bewertung",
       "tag": "Tag"
     }
   }
