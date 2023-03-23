@@ -84,10 +84,12 @@ export class FlashcardViewerComponent implements OnInit {
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
         this.timeLeft--;
+      } else if (this.timeLeft == 0) {
+        this.endStudy();
       } else {
-        this.timeLeft = 300;
+        this.timeLeft = 300; // 5 minutes
       }
-    }, 1000);
+    }, 1000); // how many miliseconds a second last
   }
 
   onShowNext() {
@@ -133,7 +135,6 @@ export class FlashcardViewerComponent implements OnInit {
     this.marked = true;
     this.markedValue = 'correct.';
     this.correctNum++;
-    console.log('correctNum: ', this.correctNum);
   }
 
   onMarkIncorrect() {
