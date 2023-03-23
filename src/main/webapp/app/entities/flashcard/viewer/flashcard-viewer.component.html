@@ -60,6 +60,13 @@
         </button>
         <span *ngIf="marked"> Marked {{ markedValue }} </span>
       </dd>
+      <dt><span jhiTranslate="flashcardsApp.flashcardViewer.endStudy">End Study</span></dt>
+      <dd>
+        <button class="btn btn-info btn-sm me-2" (click)="endStudy()" [disabled]="isLoading">
+          <fa-icon icon="check-double"></fa-icon>
+          <span jhiTranslate="flashcardsApp.flashcardViewer.finish">Finish</span>
+        </button>
+      </dd>
       <!-- <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
       <dd>
         <div *ngIf="flashcard.tag">

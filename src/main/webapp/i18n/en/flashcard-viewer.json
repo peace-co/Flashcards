@@ -31,7 +31,9 @@
       "showHint": "Show",
       "mark": "Mark",
       "markCorrect": "Correct",
-      "markIncorrect": "Incorrect"
+      "markIncorrect": "Incorrect",
+      "endStudy": "End Study",
+      "finish": "Finish"
     }
   }
 }

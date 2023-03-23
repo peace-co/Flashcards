@@ -140,7 +140,10 @@ export class FlashcardViewerComponent implements OnInit {
     this.marked = true;
     this.markedValue = 'incorrect.';
     this.incorrectNum++;
-    console.log('incorrectNum: ', this.incorrectNum);
+  }
+
+  endStudy() {
+    this.router.navigate(['']);
   }
 
   delete(flashcard: IFlashcard): void {
