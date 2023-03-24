@@ -67,12 +67,14 @@
           <span jhiTranslate="flashcardsApp.flashcardViewer.finish">Finish</span>
         </button>
       </dd>
-      <!-- <dt><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
-      <dd>
-        <div *ngIf="flashcard.tag">
-          <a [routerLink]="['/tag', flashcard.tag.id, 'view']">{{ flashcard.tag.id }}</a>
+      <dt *ngIf="study"><span jhiTranslate="flashcardsApp.flashcard.tag">Tag</span></dt>
+      <dd *ngIf="study">
+        <div *ngIf="flashcardTags">
+          <div *ngFor="let tag of flashcardTags">
+            <div>{{ tag.name }}</div>
+          </div>
         </div>
-      </dd> -->
+      </dd>
     </dl>
   </div>
 

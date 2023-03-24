@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
-import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, combineLatest, filter, switchMap, tap } from 'rxjs';
 
 import { IFlashcard } from '../flashcard.model';
 
+import { ASC, DEFAULT_SORT_DATA, DESC, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
-import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
-import { EntityArrayResponseType, FlashcardService } from '../service/flashcard.service';
+import { ITag } from 'app/entities/tag/tag.model';
 import { FlashcardDeleteDialogComponent } from '../delete/flashcard-delete-dialog.component';
+import { EntityArrayResponseType, FlashcardService } from '../service/flashcard.service';
 
 @Component({
   selector: 'jhi-flashcard-viewer',
@@ -29,6 +30,7 @@ export class FlashcardViewerComponent implements OnInit {
   incorrectNum = 0;
   marked = false;
   markedValue = '';
+  flashcardTags: any;
 
   predicate = 'id';
   ascending = true;
@@ -101,6 +103,7 @@ export class FlashcardViewerComponent implements OnInit {
         this.totalCardsPlayed = this.flashcardIndex + 1;
       }
       this.flashcard = this.flashcards[this.flashcardIndex + 1];
+      this.flashcardTags = this.flashcard.tags;
       this.showAnswer = false;
       this.showHint = false;
 
@@ -115,6 +118,7 @@ export class FlashcardViewerComponent implements OnInit {
         this.flashcardIndex -= 1;
       }
       this.flashcard = this.flashcards[this.flashcardIndex];
+      this.flashcardTags = this.flashcard.tags;
       this.showAnswer = false;
       this.showHint = false;
 
@@ -202,6 +206,7 @@ export class FlashcardViewerComponent implements OnInit {
     console.log('dataFromBody: ', dataFromBody);
     this.flashcards = dataFromBody;
     this.flashcard = this.flashcards[0];
+    this.flashcardTags = this.flashcard.tags;
     this.flashcardIndex = 0;
   }
 
