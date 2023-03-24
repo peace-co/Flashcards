@@ -135,12 +135,14 @@ export class FlashcardViewerComponent implements OnInit {
     this.marked = true;
     this.markedValue = 'correct.';
     this.correctNum++;
+    this.onShowNext();
   }
 
   onMarkIncorrect() {
     this.marked = true;
     this.markedValue = 'incorrect.';
     this.incorrectNum++;
+    this.onShowNext();
   }
 
   endStudy() {
